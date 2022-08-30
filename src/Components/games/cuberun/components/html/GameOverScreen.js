@@ -6,7 +6,7 @@ import '../../styles/gameMenu.css'
 
 import { useStore } from '../../state/useStore'
 import { useScoresContext } from '../../../../../context/leaderBoard'
-
+import { useAlertContext } from '../../../../../context/alert'
 const GameOverScreen = () => {
   const previousScores = localStorage.getItem('highscores') ? JSON.parse(localStorage.getItem('highscores')) : [...Array(3).fill(0)]
   const [shown, setShown] = useState(false)
@@ -16,6 +16,8 @@ const [showLoader,setShowLoader]=useState(false)
 const [isSubmitted,setIsSubmitted]=useState(false)
   const gameOver = useStore(s => s.gameOver)
   const score = useStore(s => s.score)
+
+  const {setAlert}=useAlertContext()
 const {setScores}=useScoresContext()
   useEffect(() => {
     let t
@@ -47,6 +49,9 @@ const {setScores}=useScoresContext()
   const handleRestart = () => {
     window.location.reload() // TODO: make a proper restart
   }
+  const showAlert=(msg)=>{
+    setAlert({show:true,message:msg})
+  }
 const handleSubmit=async (e)=>{
   e.preventDefault()
   if(showLoader || isSubmitted)return;
@@ -56,7 +61,7 @@ const handleSubmit=async (e)=>{
   formData.walletAddress=e.target["game-wallet-address"].value.trim().length >0 ? e.target["game-wallet-address"].value.trim() : "Unknown"
   formData.score=parseInt(score);
 
-  const res=await fetch(process.env.REACT_APP_SERVER_URL+"/score",{
+ try{ const res=await fetch(process.env.REACT_APP_SERVER_URL+"/score",{
     method:"POST",
     body:JSON.stringify(formData),
     headers:{
@@ -66,7 +71,7 @@ const handleSubmit=async (e)=>{
   })
   if(!res || !res.ok){
     setShowLoader(false)
-    return  alert("Some error occurred!")
+    showAlert("Some error occurred!")
   }
   const response=await res.json()
   console.log(response)
@@ -81,20 +86,24 @@ const handleSubmit=async (e)=>{
     })
     setIsSubmitted(true)
     setShowLoader(false)
+    return;
   }
   else if(response.success == false){
     if(response.message){
-    alert(response.message)
+    showAlert(response.message)
     setShowLoader(false)
     
   }
   else{
-    alert("Some error occurred!")
+    showAlert("Some error occurred!")
 
     setShowLoader(false)
   }
+}}
+catch(e){
+  showAlert("Some error occurred!")
+  setShowLoader(false)
 }
-
 }
   return shown ? (
     <div className="game__container" style={{ opacity: shown ? 1 : 0, background: opaque ? '#141622FF' : '#141622CC' }}>
@@ -110,7 +119,7 @@ const handleSubmit=async (e)=>{
       {isSubmitted ?
         <h3 className="submit-info">Successfully Submitted</h3>
       :  <div className="cuberun-from-container">
-          <h1>Fill the following:</h1>
+          <h1>Fill to Participate:</h1>
           <form onSubmit={handleSubmit}>
             <div className="game-form-control">
               

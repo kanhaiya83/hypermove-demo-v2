@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HyperMove from './HyperMove';
 
 import ScoresProvider from "./context/leaderBoard"
-import AlertProvider from "./context/leaderBoard"
+import AlertProvider from "./context/alert"
+import AlertComponent from './Components/Alert';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

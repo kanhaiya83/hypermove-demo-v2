@@ -79,13 +79,22 @@ color: white;
   height:100%;
   max-height: 400px;
   color: black;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: #141415;
 } 
 .leaderboard-container table{
   width: 100%;
   color: white;
 }
+.leaderboard-container table tr{
+border-bottom: 1px solid silver;
+}
+.leaderboard-container table tr:nth-child(1){
+  border-bottom: 2px solid silver;
+  color: #6c02d7 !important;
+}
+
+
 th,td{
   text-align: center;
 }
@@ -101,4 +110,12 @@ text-overflow: ellipsis;
   font-weight: 500;
   font-size: 3rem;
   font-family: 'Commando', Inconsolata, monospace;
+}
+
+.custom-alert-container{
+  position: fixed;  
+  top: 1rem;
+  right: 2%;
+  z-index: 100000;
+color: black;
 }

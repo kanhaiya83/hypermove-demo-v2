@@ -10,7 +10,7 @@ const scoresList=
 scores.length>0 ?
 <table><tbody><tr className="score-row bold">
     
-  <th>No.</th>
+  <th>Rank</th>
     <th>Name</th>
     <th>Score</th>
     <th>Wallet</th>

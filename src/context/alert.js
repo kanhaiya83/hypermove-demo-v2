@@ -3,12 +3,12 @@
 
 import { createContext, useContext, useState } from "react";
 
-const defaultState={alert:{show:false,message:""},setAlert:()=>{}}
-const AlertContext=createContext(defaultState)
+const defaultState={show:false,message:""}
+const AlertContext=createContext({alert:defaultState,setAlert:()=>{}})
 export const useAlertContext=()=>useContext(AlertContext)
 
 const AlertProvider=({children})=>{
-    const [alert,setAlert]  =  useState({show:false,message:""})
+    const [alert,setAlert]  =  useState(defaultState)
    return  <AlertContext.Provider value={{alert,setAlert}}>
         {children}
     </AlertContext.Provider>

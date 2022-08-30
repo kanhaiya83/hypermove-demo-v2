@@ -63,7 +63,7 @@ useEffect(() => {
 
     return(
         <React.Fragment>
-<Container fluid className="home-content">
+{/* <Container fluid className="home-content">
 <Row className="hero-section text-center align-items-center">
 <div>
 <h1>BLOCKCHAIN's FINEST GAMING PLATFORM!</h1>
@@ -106,7 +106,7 @@ useEffect(() => {
     <div className='me-5'><span className='purple-text'>META</span>VERSE</div>
   </Marquee>
 </Row>
-</Container>
+</Container> */}
 
 <Container>
 
@@ -134,7 +134,7 @@ useEffect(() => {
 
 </Row>
 
-<Row className="create-avatar-section py-5 align-items-center">
+{/* <Row className="create-avatar-section py-5 align-items-center">
 <Col xs={12} md={6}>
 <h2 className="nevan section-heading py-2 py-md-3">INTO THE METAVERSE</h2>
 <p>HyperMove acts a bridge that connects gamers/users to the vastness of the metaverse virtually via its app.</p>
@@ -429,7 +429,7 @@ useEffect(() => {
 <Col xs={12} md={6}>
 <iframe src="https://app.vectary.com/p/18pwIIThM3oVhy69sULlY1" frameborder="0" width="100%" height="480"></iframe>
 </Col>
-</Row>
+</Row> */}
 
 
 </Container>
