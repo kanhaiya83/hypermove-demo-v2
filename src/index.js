@@ -7,13 +7,16 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HyperMove from './HyperMove';
 
+import ScoresProvider from "./context/leaderBoard"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HyperMove/>
+        <ScoresProvider>
 
+    <HyperMove/>
+    </ScoresProvider>
   </React.StrictMode>
 );
 

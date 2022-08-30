@@ -9,7 +9,8 @@ import { RiFilePaper2Line, RiUserHeartLine } from "react-icons/ri";
 import { IoFitnessOutline, IoGameControllerOutline, IoLogoBitcoin } from "react-icons/io5";
 import { AiOutlineLike } from "react-icons/ai";
 
-
+import CubeWorld from "./../../Components/games/cuberun/components/CubeWorld" 
+import LeaderBoard from "../../Components/LeaderBoard";
 import { Navigation, Pagination, Scrollbar, A11y, EffectCoverflow, EffectCards, Autoplay   } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -63,7 +64,7 @@ useEffect(() => {
     return(
         <React.Fragment>
 <Container fluid className="home-content">
-<Row className="hero-section text-center align-items-center">
+{/* <Row className="hero-section text-center align-items-center">
 <div>
 <h1>BLOCKCHAIN's FINEST GAMING PLATFORM!</h1>
 <h3>Onboard HyperMove, Convert your daily activities into real-world cash and Maintain a healthier life-style.</h3>
@@ -104,7 +105,7 @@ useEffect(() => {
     <div className='me-5'><span className='purple-text'>NFT </span> MARKETPLACE</div>
     <div className='me-5'><span className='purple-text'>META</span>VERSE</div>
   </Marquee>
-</Row>
+</Row> */}
 </Container>
 
 <Container>
@@ -117,18 +118,22 @@ useEffect(() => {
 
     <Col xs={12} md={4}>
     <HyperButton variant="dark" className="dark-btn nevan mb-5" text="SCORE & WIN"/>
-    <div className="game-container"></div>
+   
 
+    <div className="cuberun-game-container">
+    
+    <CubeWorld/>
+      </div>
     </Col>
 
 
     <Col xs={12} md={4}>
     <HyperButton variant="dark" className="dark-btn nevan mb-5" text="LEADERBOARD"/>
-    <div className="leaderboard-container"></div>
+        <LeaderBoard/>
     </Col>
 
 </Row>
-
+{/* 
 <Row className="create-avatar-section py-5 align-items-center">
 <Col xs={12} md={6}>
 <h2 className="nevan section-heading py-2 py-md-3">INTO THE METAVERSE</h2>
@@ -425,7 +430,7 @@ useEffect(() => {
 <iframe src="https://app.vectary.com/p/18pwIIThM3oVhy69sULlY1" frameborder="0" width="100%" height="480"></iframe>
 </Col>
 </Row>
-
+ */}
 
 </Container>
 </React.Fragment>
