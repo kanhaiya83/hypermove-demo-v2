@@ -8,14 +8,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HyperMove from './HyperMove';
 
 import ScoresProvider from "./context/leaderBoard"
+import AlertProvider from "./context/leaderBoard"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
         <ScoresProvider>
-
+<AlertProvider>
     <HyperMove/>
+    </AlertProvider>
     </ScoresProvider>
   </React.StrictMode>
 );

@@ -64,6 +64,10 @@ const handleSubmit=async (e)=>{
     }
 
   })
+  if(!res || !res.ok){
+    setShowLoader(false)
+    return  alert("Some error occurred!")
+  }
   const response=await res.json()
   console.log(response)
   if(response.success){
@@ -78,7 +82,19 @@ const handleSubmit=async (e)=>{
     setIsSubmitted(true)
     setShowLoader(false)
   }
-  
+  else if(response.success == false){
+    if(response.message){
+    alert(response.message)
+    setShowLoader(false)
+    
+  }
+  else{
+    alert("Some error occurred!")
+
+    setShowLoader(false)
+  }
+}
+
 }
   return shown ? (
     <div className="game__container" style={{ opacity: shown ? 1 : 0, background: opaque ? '#141622FF' : '#141622CC' }}>
@@ -87,7 +103,7 @@ const handleSubmit=async (e)=>{
         <div className="game__scorecontainer">
           <div className="game__score-left">
             <h1 className="game__score-title">SCORE</h1>
-            <h1 className="game__score">{score.toFixed(0)}</h1>
+            <h1 className="game__score">{parseInt(score)}</h1>
           </div>
          
         </div>
