@@ -27,23 +27,23 @@ scores.map((sc,i)=>{
 })
 }</tbody></table> : <h2>No scores available</h2>
 console.log({scoresList});
-  useEffect(()=>{
-    (async ()=>{
-      try{
-        const res=await fetch(process.env.REACT_APP_SERVER_URL + "/score")
-        const resData=await res.json()
-        if(resData.success){
-          const sortedScores=resData.scores.sort((a,b)=>{
-            return ( parseInt(b.score) - parseInt(a.score))
-          })
-          console.log(sortedScores)
-          setScores(sortedScores)
-        }
+  // useEffect(()=>{
+  //   (async ()=>{
+  //     try{
+  //       const res=await fetch(process.env.REACT_APP_SERVER_URL + "/score")
+  //       const resData=await res.json()
+  //       if(resData.success){
+  //         const sortedScores=resData.scores.sort((a,b)=>{
+  //           return ( parseInt(b.score) - parseInt(a.score))
+  //         })
+  //         console.log(sortedScores)
+  //         setScores(sortedScores)
+  //       }
       
-      }
-      catch(e){}
-    })()
-  },[])
+  //     }
+  //     catch(e){}
+  //   })()
+  // },[])
 
 return(
   <>
