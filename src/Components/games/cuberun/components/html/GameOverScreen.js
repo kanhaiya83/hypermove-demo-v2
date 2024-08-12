@@ -54,12 +54,27 @@ const {setScores}=useScoresContext()
   }
 const handleSubmit=async (e)=>{
   e.preventDefault()
+  
   if(showLoader || isSubmitted)return;
   setShowLoader(true)
   const formData={}
   formData.name=e.target["game-name"].value.trim().length >0 ? e.target["game-name"].value.trim() : "Unknown"
   formData.walletAddress=e.target["game-wallet-address"].value.trim().length >0 ? e.target["game-wallet-address"].value.trim() : "Unknown"
   formData.score=parseInt(score);
+
+
+  setScores(prev=>{
+    let temp=[...prev,formData.score]
+
+    const sortedScores=temp.sort((a,b)=>{
+      return ( parseInt(b.score) - parseInt(a.score))
+    })
+    return sortedScores
+  })
+  setIsSubmitted(true)
+  setShowLoader(false)
+  
+  return 
 
  try{ const res=await fetch(process.env.REACT_APP_SERVER_URL+"/score",{
     method:"POST",
